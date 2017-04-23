@@ -1,0 +1,11 @@
+{
+  "name": "gladys-dev-platform-backend",
+  "version": "0.1.0",
+  "description": "Gladys Developer Platform Back-End",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Pierre-Gilles Leymarie",
+  "license": "CC-BY-NC-SA-3.0"
+}
