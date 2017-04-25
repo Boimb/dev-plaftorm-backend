@@ -127,6 +127,7 @@ ALTER TABLE ONLY t_script ADD CONSTRAINT t_script_pkey PRIMARY KEY (id);
 
 CREATE TABLE t_sentence (
     id uuid DEFAULT uuid_generate_v4() NOT NULL,
+    user_id uuid NOT NULL,
     text character varying NOT NULL,
     created_at timestamp NOT NULL default now(),
     updated_at timestamp NOT NULL default now(),
@@ -206,8 +207,7 @@ CREATE INDEX ix_t_module_user_id ON t_module USING btree (user_id);
 CREATE INDEX ix_t_module_text_module_id ON t_module_text USING btree (module_id);
 CREATE INDEX ix_t_module_version_module_id ON t_module_version USING btree (module_id);
 CREATE INDEX ix_t_instance_user_id ON t_instance USING btree (user_id);
-CREATE INDEX ix_t_module_download_user_id ON t_module_download USING btree (user_id);
-CREATE INDEX ix_t_module_download_module_version_id ON t_module_download USING btree (module_version_id);
+CREATE INDEX ix_t_module_download_instance_id ON t_module_download USING btree (instance_id);
 CREATE INDEX ix_t_module_download_module_version_id ON t_module_download USING btree (module_version_id);
 CREATE INDEX ix_t_module_review_user_id ON t_module_review USING btree (user_id);
 CREATE INDEX ix_t_module_review_module_id ON t_module_review USING btree (module_id);
