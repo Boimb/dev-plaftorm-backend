@@ -202,7 +202,7 @@ ALTER TABLE ONLY t_sentence_vote
 -- CREATE INDEXES --
 --------------------
 
-CREATE INDEX ix_t_user_email ON t_user USING btree (email);
+CREATE INDEX ix_t_user_email ON t_user USING btree (lower(email));
 CREATE INDEX ix_t_module_user_id ON t_module USING btree (user_id);
 CREATE INDEX ix_t_module_text_module_id ON t_module_text USING btree (module_id);
 CREATE INDEX ix_t_module_version_module_id ON t_module_version USING btree (module_id);
