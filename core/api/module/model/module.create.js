@@ -1,4 +1,4 @@
-module.exports.create = create;
+module.exports = create;
 
 const schema = require('../const/module.schema.js');
 const Joi = require('joi');
