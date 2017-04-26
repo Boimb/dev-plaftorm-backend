@@ -236,5 +236,4 @@ CREATE INDEX ix_t_gladys_version_created_at ON t_gladys_version USING btree (cre
 --- No duplicate (user_id, sentence_id) row in t_sentence_vote table
 --- Prevent a user from voting two times for the same sentence
 CREATE UNIQUE INDEX ix_t_sentence_vote_sentence_id_user_id_unique on t_sentence_vote (user_id, sentence_id) WHERE (is_deleted = false);
-
-
+ALTER TABLE t_module ADD CONSTRAINT unique_t_module_slug UNIQUE (slug);
