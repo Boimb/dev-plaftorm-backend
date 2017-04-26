@@ -4,6 +4,12 @@ const logger = require('tracer').colorConsole({level: process.env.LOG_LEVEL || '
 const squel = require('squel');
 const squelPostgres = squel.useFlavour('postgres');
 
+module.exports.query = query;
+module.exports.insert = insert;
+module.exports.update = update;
+module.exports.updateOne = updateOne;
+
+
 //this initializes a connection pool
 const pool = new pg.Pool(config.db);
 
@@ -17,10 +23,15 @@ pool.on('error', function (err, client) {
   logger.error('PostgreSQL pool: idle client error', err.message, err.stack);
 });
 
+function query(text, values){
+    return pool.query(text, values)
+        .then((result) => result.rows);
+};
+
 /**
  * Helper function to insert one or many elements
  */
-module.exports.insert = function(tableName, values) {
+function insert(tableName, values) {
     var request;
 
     if(values instanceof Array){
@@ -37,15 +48,20 @@ module.exports.insert = function(tableName, values) {
                         .toParam();
     }
 
-    return pool.query(request.text, request.values)
-        .then((result) => {
-            if(values instanceof Array) return result.rows;
-            else return result.rows[0];
+    return query(request.text, request.values)
+        .then((rows) => {
+            if(values instanceof Array) return rows;
+            else return rows[0];
         });
 };
 
-// update
-module.exports.update = function(tableName, condition, values) {
+/**
+ * Update rows in DB
+ * @param {*} tableName 
+ * @param {*} condition 
+ * @param {*} values 
+ */
+function update(tableName, condition, values) {
     var request = squelPostgres.update()
         .table(tableName)
         .setFields(values)
@@ -53,15 +69,17 @@ module.exports.update = function(tableName, condition, values) {
         .returning('*')
         .toParam();
 
-    return pool.query(request.text, request.values)
-        .then((result) => {
-            if(result.rows.length === 0) return Promise.reject(new Error('NOT_FOUND'));
-            else return result.rows[0];
-        });
+    return query(request.text, request.values);
 };
 
-// query and return rows
-module.exports.query = function(text, values) {
-    return pool.query(text, values)
-        .then((result) => result.rows);
+/**
+ * Update one row, and return NOT FOUND if no row
+ * was updated
+ */
+function updateOne(tableName, condition, values) {
+    return update(tableName, condition, values)
+        .then((rows) => {
+            if(rows.length === 0) return Promise.reject(new Error('NOT_FOUND'));
+            else return rows[0];
+        })
 };
