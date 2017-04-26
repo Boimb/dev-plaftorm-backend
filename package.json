@@ -4,7 +4,7 @@
   "description": "Gladys Developer Platform Back-End",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/**/*.js",
+    "test": "mocha 'test/**/*.js'",
     "cover": "istanbul cover _mocha -- -R spec 'test/**/*.js'"
   },
   "author": "Pierre-Gilles Leymarie",
