@@ -25,18 +25,12 @@ function login(params) {
             if(validPassword === false) return Promise.reject(new Error('LOGIN_INVALID_PASSWORD'));
 
             delete user.password;
-            
-            var refreshTokenPayload = {
-                id: user.id,
-                jwtid: uuid.v4()
-            };
 
             var accessTokenPayload = {
                 id: user.id,
                 jwtid: uuid.v4()
             };
 
-            user.refresh_token = jwt.sign(refreshTokenPayload, config.refreshTokenJwt.secret, config.refreshTokenJwt.options);
             user.access_token = jwt.sign(accessTokenPayload, config.accessTokenJwt.secret, config.accessTokenJwt.options);
 
             return user;

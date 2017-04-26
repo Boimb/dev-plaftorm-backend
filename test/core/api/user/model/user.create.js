@@ -11,7 +11,6 @@ describe('user', function () {
                 .then((createdUser) => {
                     createdUser.should.have.property('name');
                     createdUser.should.have.property('email'); 
-                    createdUser.should.have.property('refresh_token');
                     createdUser.should.have.property('access_token');
                     createdUser.should.not.have.property('password');
                 });

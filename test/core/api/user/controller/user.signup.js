@@ -17,7 +17,6 @@ describe('user', function () {
                 .expect(201)
                 .then((response) => {
                     response.body.should.have.property('access_token');
-                    response.body.should.have.property('refresh_token');
                 });
         });
 
