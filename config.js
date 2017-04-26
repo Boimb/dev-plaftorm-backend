@@ -10,5 +10,17 @@ module.exports = {
     },
     server: {
         port: parseInt(process.env.SERVER_PORT)
+    },
+    refreshTokenJwt: {
+        secret: process.env.REFRESH_TOKEN_JWT_SECRET,
+        options: {
+            expiresIn: process.env.REFRESH_TOKEN_JWT_EXPIRATION
+        }
+    },
+    accessTokenJwt: {
+        secret: process.env.ACCESS_TOKEN_JWT_SECRET,
+        options: {
+            expiresIn: process.env.ACCESS_TOKEN_JWT_EXPIRATION   
+        }
     }
 };

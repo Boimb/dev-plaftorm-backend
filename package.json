@@ -10,6 +10,7 @@
   "author": "Pierre-Gilles Leymarie",
   "license": "CC-BY-NC-SA-3.0",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
@@ -20,12 +21,14 @@
     "pg": "^6.1.5",
     "pg-native": "^1.10.1",
     "squel": "^5.9.1",
-    "tracer": "^0.8.7"
+    "tracer": "^0.8.7",
+    "uuid": "^3.0.1"
   },
   "devDependencies": {
     "dotenv": "^4.0.0",
     "gulp": "^3.9.1",
     "istanbul": "^0.4.5",
-    "mocha": "^3.3.0"
+    "mocha": "^3.3.0",
+    "should": "^11.2.1"
   }
 }

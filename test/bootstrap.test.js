@@ -1,5 +1,5 @@
 global.__base = __dirname + '/../';
-
+const should = require('should');
 const cleanDb = require('./tasks/cleanDb.js');
 
 before(function() {
