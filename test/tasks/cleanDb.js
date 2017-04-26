@@ -11,6 +11,7 @@ module.exports = function cleanDb(){
         't_gladys_version',
         't_sentence_vote',
         't_sentence',
+        't_module',
         't_user'
     ];
 
