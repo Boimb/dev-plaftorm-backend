@@ -20,5 +20,19 @@ describe('user', function () {
                     response.body.should.have.property('refresh_token');
                 });
         });
+
+        it('should return a 409 error, already exist', function () {
+            const user = require(__base + 'core/api/user/model/user.js');
+            var params = {
+                name: 'Jean',
+                email: 'tony.stark@test.fr',
+                password: 'testtests'
+            };
+
+            return request(app)
+                .post('/signup')
+                .send(params)
+                .expect(409);
+        });
     });
 });
