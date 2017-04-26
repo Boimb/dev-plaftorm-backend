@@ -5,6 +5,7 @@ node_js:
   
 services:
   - postgresql
+  - redis-server
 
 addons:
   apt:
