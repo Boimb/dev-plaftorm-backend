@@ -6,6 +6,7 @@ const Promise = require('bluebird');
 const squelPostgres = squel.useFlavour('postgres');
 
 module.exports.query = query;
+module.exports.queryUnique = queryUnique;
 module.exports.insert = insert;
 module.exports.update = update;
 module.exports.updateOne = updateOne;
@@ -36,6 +37,20 @@ function query(text, values){
             .catch((err) => reject(err));
     });
 };
+
+/**
+ * Execute a query and return first elements
+ * @param {*} text 
+ * @param {*} values 
+ */
+function queryUnique(text, values){
+    return query(text, values)
+        .then((rows) => {
+            if(rows.length === 0) return Promise.reject(new Error('NOT_FOUND'));
+            return rows[0];
+        });
+};
+
 
 /**
  * Helper function to insert one or many elements
