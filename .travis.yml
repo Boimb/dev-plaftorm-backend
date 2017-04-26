@@ -19,7 +19,7 @@ before_install:
   - psql -U postgres -d "travis_ci_test" -a -f ./db/init.sql
 
 script:
-  - "grunt coverage"
+  - "gulp coverage"
     
 env:
   - CXX=g++-4.8
