@@ -22,5 +22,8 @@ module.exports = {
         options: {
             expiresIn: process.env.ACCESS_TOKEN_JWT_EXPIRATION   
         }
+    },
+    aws: {
+        bucket: process.env.AWS_BUCKET
     }
 };
