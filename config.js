@@ -8,6 +8,11 @@ module.exports = {
         max: parseInt(process.env.DB_MAX_CLIENT), // max number of clients in the pool
         idleTimeoutMillis: parseInt(process.env.DB_IDLE_TIMEOUT), // how long a client is allowed to remain idle before being closed
     },
+    redis: {
+        host: process.env.REDIS_HOST,
+        port: parseInt(process.env.REDIS_PORT),
+        passord: process.env.REDIS_PASSWORD
+    },
     server: {
         port: parseInt(process.env.SERVER_PORT)
     },
