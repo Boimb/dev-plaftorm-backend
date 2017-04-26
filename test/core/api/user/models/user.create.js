@@ -31,5 +31,21 @@ describe('user', function () {
                     
                 });
         });
+
+        it('should not create a user. Email already exist', function () {
+            const user = require(__base + 'core/api/user/model/user.js');
+            var params = {
+                name: 'Jean',
+                email: 'tony.stark@test.fr',
+                password: 'testtests'
+            };
+            return user.create(params)
+                .then((createdUser) => {
+                    throw "User should not be created";
+                })
+                .catch((err) => {
+                    err.message.should.equal('USER_EMAIL_ALREADY_EXIST');
+                });
+        });
     });
 });
