@@ -19,6 +19,9 @@ app.use(bodyParser.json());
 // load API routes
 require('./core/api/routes.js')(app);
 
+// add error middleware
+app.use(require('./core/middleware/error.js'));
+
 app.listen(config.server.port);
 
 logger.info(`Server listening on port : ${config.server.port}`);
