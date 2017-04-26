@@ -2,6 +2,7 @@ const pg = require('pg').native;
 const config = require(__base + 'config.js');
 const logger = require('tracer').colorConsole({level: process.env.LOG_LEVEL || 'debug' });
 const squel = require('squel');
+const Promise = require('bluebird');
 const squelPostgres = squel.useFlavour('postgres');
 
 module.exports.query = query;
@@ -23,9 +24,17 @@ pool.on('error', function (err, client) {
   logger.error('PostgreSQL pool: idle client error', err.message, err.stack);
 });
 
+/**
+ * Execute a query and returns a bluebird Promise
+ * @param {*} text 
+ * @param {*} values 
+ */
 function query(text, values){
-    return pool.query(text, values)
-        .then((result) => result.rows);
+    return new Promise(function(resolve, reject){
+        return pool.query(text, values)
+            .then((result) => resolve(result.rows))
+            .catch((err) => reject(err));
+    });
 };
 
 /**
@@ -35,6 +44,10 @@ function insert(tableName, values) {
     var request;
 
     if(values instanceof Array){
+
+        // if array is empty, don't go to DB
+        if(values.length === 0) return Promise.resolve(values);
+
         request = squelPostgres.insert()
                         .into(tableName)
                         .setFieldsRows(values)
