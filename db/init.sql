@@ -18,6 +18,7 @@ CREATE TABLE t_user (
 );
 
 ALTER TABLE ONLY t_user ADD CONSTRAINT t_user_pkey PRIMARY KEY (id);
+ALTER TABLE t_user OWNER TO postgres;
 
 CREATE TABLE t_module (
     id uuid DEFAULT uuid_generate_v4() NOT NULL,
@@ -35,6 +36,7 @@ CREATE TABLE t_module (
 );
 
 ALTER TABLE ONLY t_module ADD CONSTRAINT t_module_pkey PRIMARY KEY (id);
+ALTER TABLE t_module OWNER TO postgres;
 
 CREATE TABLE t_module_text (
     id uuid DEFAULT uuid_generate_v4() NOT NULL,
@@ -50,6 +52,7 @@ CREATE TABLE t_module_text (
 );
 
 ALTER TABLE ONLY t_module_text ADD CONSTRAINT t_module_text_pkey PRIMARY KEY (id);
+ALTER TABLE t_module_text OWNER TO postgres;
 
 CREATE TABLE t_module_version (
     id uuid DEFAULT uuid_generate_v4() NOT NULL,
@@ -61,6 +64,7 @@ CREATE TABLE t_module_version (
 );
 
 ALTER TABLE ONLY t_module_version ADD CONSTRAINT t_module_version_pkey PRIMARY KEY (id);
+ALTER TABLE t_module_version OWNER TO postgres;
 
 CREATE TABLE t_instance (
     id uuid DEFAULT uuid_generate_v4() NOT NULL,
@@ -82,6 +86,7 @@ CREATE TABLE t_instance (
 );
 
 ALTER TABLE ONLY t_instance ADD CONSTRAINT t_instance_pkey PRIMARY KEY (id);
+ALTER TABLE t_instance OWNER TO postgres;
 
 CREATE TABLE t_module_download (
     id uuid DEFAULT uuid_generate_v4() NOT NULL,
@@ -95,6 +100,7 @@ CREATE TABLE t_module_download (
 );
 
 ALTER TABLE ONLY t_module_download ADD CONSTRAINT t_module_download_pkey PRIMARY KEY (id);
+ALTER TABLE t_module_download OWNER TO postgres;
 
 CREATE TABLE t_module_review (
     id uuid DEFAULT uuid_generate_v4() NOT NULL,
@@ -108,6 +114,7 @@ CREATE TABLE t_module_review (
 );
 
 ALTER TABLE ONLY t_module_review ADD CONSTRAINT t_module_review_pkey PRIMARY KEY (id);
+ALTER TABLE t_module_review OWNER TO postgres;
 
 CREATE TABLE t_script (
     id uuid DEFAULT uuid_generate_v4() NOT NULL,
@@ -124,6 +131,7 @@ CREATE TABLE t_script (
 );
 
 ALTER TABLE ONLY t_script ADD CONSTRAINT t_script_pkey PRIMARY KEY (id);
+ALTER TABLE t_script OWNER TO postgres;
 
 CREATE TABLE t_sentence (
     id uuid DEFAULT uuid_generate_v4() NOT NULL,
@@ -135,6 +143,7 @@ CREATE TABLE t_sentence (
 );
 
 ALTER TABLE ONLY t_sentence ADD CONSTRAINT t_sentence_pkey PRIMARY KEY (id);
+ALTER TABLE t_sentence OWNER TO postgres;
 
 CREATE TABLE t_sentence_vote (
     id uuid DEFAULT uuid_generate_v4() NOT NULL,
@@ -147,6 +156,7 @@ CREATE TABLE t_sentence_vote (
 );
 
 ALTER TABLE ONLY t_sentence_vote ADD CONSTRAINT t_sentence_vote_pkey PRIMARY KEY (id);
+ALTER TABLE t_sentence_vote OWNER TO postgres;
 
 CREATE TABLE t_gladys_version (
     id uuid DEFAULT uuid_generate_v4() NOT NULL,
@@ -157,6 +167,7 @@ CREATE TABLE t_gladys_version (
 );
 
 ALTER TABLE ONLY t_gladys_version ADD CONSTRAINT t_gladys_version_pkey PRIMARY KEY (id);
+ALTER TABLE t_gladys_version OWNER TO postgres;
 
 -------------------------
 -- CREATE FOREIGN KEYS --
@@ -224,3 +235,5 @@ CREATE INDEX ix_t_gladys_version_created_at ON t_gladys_version USING btree (cre
 --- No duplicate (user_id, sentence_id) row in t_sentence_vote table
 --- Prevent a user from voting two times for the same sentence
 CREATE UNIQUE INDEX ix_t_sentence_vote_sentence_id_user_id_unique on t_sentence_vote (user_id, sentence_id) WHERE (is_deleted = false);
+
+
