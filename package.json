@@ -4,7 +4,8 @@
   "description": "Gladys Developer Platform Back-End",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/**/*.js",
+    "cover": "istanbul cover _mocha -- -R spec 'test/**/*.js'"
   },
   "author": "Pierre-Gilles Leymarie",
   "license": "CC-BY-NC-SA-3.0",
