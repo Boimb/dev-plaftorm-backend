@@ -16,6 +16,10 @@ module.exports = {
             code: 403,
             message: 'LOGIN_INVALID_PASSWORD'
         },
+        'NOT_FOUND': {
+            code: 404,
+            message: 'NOT_FOUND'
+        },
         'DEFAULT': {
             code: 500,
             message: 'SERVER_ERROR'
