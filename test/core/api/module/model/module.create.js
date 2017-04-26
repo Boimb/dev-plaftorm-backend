@@ -10,12 +10,12 @@ describe('module', function () {
                 min_gladys_version: 3,
                 max_gladys_version: 3
             };
-            var userId = '08530e76-0318-4557-98a7-e570ec0a31db';
-            return Module.create(userId, params)
+            var user = {id: '08530e76-0318-4557-98a7-e570ec0a31db'};
+            return Module.create(user, params)
                 .then((createdModule) => {
                     createdModule.should.have.property('name');
                     createdModule.should.have.property('img');
-                    createdModule.should.have.property('user_id', userId);
+                    createdModule.should.have.property('user_id', user.id);
                 });
         });
     });
