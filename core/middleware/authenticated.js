@@ -11,7 +11,7 @@ const opts = {
 module.exports = function(passport) {
 
     // implement passport-jwt strategy
-    passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
+    passport.use('authenticated', new JwtStrategy(opts, function(jwt_payload, done) {
 
         // See if user exist in Redis/DB
         User.getById(jwt_payload.id)
