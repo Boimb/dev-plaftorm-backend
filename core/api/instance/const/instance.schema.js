@@ -1,15 +1,10 @@
 const Joi = require('joi');
 
 var schema = Joi.object().keys({
-    version: Joi.string(),
-    os: Joi.string(),
-    platform: Joi.string(),
-    node_version: Joi.string(),
-    latitude: Joi.number(),
-    longitude: Joi.number(),
-    city: Joi.string(),
-    zipcode: Joi.string(),
-    country: Joi.string()
+    version: Joi.string().allow(null),
+    os: Joi.string().allow(null),
+    platform: Joi.string().allow(null),
+    node_version: Joi.string().allow(null),
 });
 
 module.exports = schema;

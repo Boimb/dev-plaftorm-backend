@@ -8,15 +8,10 @@ describe('instance', function () {
                 version: '3.5.2',
                 os: 'Linux',
                 platform: 'armv61',
-                node_version: '6.3.1',
-                latitude: 45.3,
-                longitude: 34.3,
-                city: 'Paris',
-                zipcode: '75001',
-                country: 'France'
+                node_version: '6.3.1'
             };
 
-            return Instance.create(params)
+            return Instance.create('212.232.51.35', params)
                 .then((createdInstance) => {
                     createdInstance.should.have.property('id');
                 });
