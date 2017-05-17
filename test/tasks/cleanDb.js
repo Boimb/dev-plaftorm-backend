@@ -6,6 +6,7 @@ module.exports = function cleanDb(){
     var toCleanInOrder = [
         't_module_download',
         't_module_review',
+        't_module_text',
         't_module_version',
         't_instance',
         't_gladys_version',
