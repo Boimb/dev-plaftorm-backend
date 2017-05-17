@@ -20,4 +20,7 @@ module.exports = function(app) {
 
     // MODULE_REVIEW
     app.post('/module_review', passport.authenticate('authenticated', { session: false}), require('./module_review/controller/moduleReview.post.js'));
+
+    // MODULE_VERSION
+    app.post('/module_version', passport.authenticate('authenticated', { session: false}), require('./module_version/controller/moduleVersion.post.js'));
 };
