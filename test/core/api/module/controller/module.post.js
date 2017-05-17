@@ -9,7 +9,7 @@ describe('module', function () {
                 name: 'test',
                 img: 'http://test.fr',
                 url: 'https://github.com/gladys-test',
-                slug: 'test',
+                slug: 'newmodule',
                 min_gladys_version: 3,
                 max_gladys_version: 3
             };
