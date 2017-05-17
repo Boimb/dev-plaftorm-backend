@@ -13,4 +13,7 @@ module.exports = function(app) {
     // MODULE
     app.post('/module', passport.authenticate('authenticated', { session: false}), require('./module/controller/module.post.js'));
     app.patch('/module/:id', passport.authenticate('authenticated', { session: false}), require('./module/controller/module.patch.js'));
+
+    // MODULE_TEXT
+    app.post('/module_text', passport.authenticate('authenticated', { session: false}), require('./module_text/controller/moduleText.post.js'));
 };
