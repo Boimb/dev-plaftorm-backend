@@ -16,6 +16,7 @@ const logger = require('tracer').colorConsole({level: process.env.LOG_LEVEL || '
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.enable('trust proxy');
 
 require('./core/middleware/authenticated.js')(passport);
 
