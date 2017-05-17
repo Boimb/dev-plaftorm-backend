@@ -16,7 +16,7 @@ describe('instance', function () {
                 country: 'France'
             };
 
-            return Instance.update('5b87a6fb-0e3d-4220-aaef-35351073d094', params)
+            return Instance.update('5b87a6fb-0e3d-4220-aaef-35351073d094','212.232.51.35', params)
                 .then((updatedInstance) => {
                     updatedInstance.should.have.property('id');
                     updatedInstance.should.have.property('os', 'MacOS');

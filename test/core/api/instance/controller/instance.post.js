@@ -19,7 +19,6 @@ describe('instance', function () {
 
             return request(app)
                 .post('/instance')
-                .set('Authorization', 'JWT ' + process.env.TEST_JWT)
                 .send(params)
                 .expect(201)
                 .then((response) => {
