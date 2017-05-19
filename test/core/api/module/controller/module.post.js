@@ -10,8 +10,8 @@ describe('module', function () {
                 img: 'http://test.fr',
                 url: 'https://github.com/gladys-test',
                 slug: 'newmodule',
-                min_gladys_version: 3,
-                max_gladys_version: 3
+                min_gladys_version: '3.0.0',
+                max_gladys_version: '3.0.0'
             };
 
             return request(app)

@@ -8,8 +8,8 @@ describe('module', function () {
             var params = {
                 img: 'http://test.fr',
                 url: 'https://github.com/gladys-test',
-                min_gladys_version: 3,
-                max_gladys_version: 3
+                min_gladys_version: '3.2.1',
+                max_gladys_version: '3.1.0'
             };
 
             return request(app)

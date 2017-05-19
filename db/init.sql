@@ -29,8 +29,8 @@ CREATE TABLE t_module (
     url character varying NOT NULL,
     slug character varying NOT NULL,
     online boolean DEFAULT false NOT NULL,
-    min_gladys_version integer NOT NULL,
-    max_gladys_version integer NOT NULL,
+    min_gladys_version character varying NOT NULL,
+    max_gladys_version character varying NOT NULL,
     created_at timestamp NOT NULL default now(),
     updated_at timestamp NOT NULL default now(),
     is_deleted boolean DEFAULT false NOT NULL

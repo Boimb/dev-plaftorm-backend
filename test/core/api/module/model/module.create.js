@@ -7,8 +7,8 @@ describe('module', function () {
                 img: 'http://test.fr',
                 url: 'https://github.com/test/gladys-test',
                 slug: 'newmodule',
-                min_gladys_version: 3,
-                max_gladys_version: 3
+                min_gladys_version: '3.0.0',
+                max_gladys_version: '3.0.0'
             };
             var user = {id: '08530e76-0318-4557-98a7-e570ec0a31db'};
             return Module.create(user, params)
