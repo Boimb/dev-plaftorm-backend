@@ -14,6 +14,7 @@ module.exports = function(app) {
     // MODULE
     app.get('/module', require('./module/controller/module.get.js'));
     app.post('/module', passport.authenticate('authenticated', { session: false}), require('./module/controller/module.post.js'));
+    app.get('/module/:id', require('./module/controller/module.getById.js'));
     app.patch('/module/:id', passport.authenticate('authenticated', { session: false}), require('./module/controller/module.patch.js'));
 
     // MODULE_TEXT
