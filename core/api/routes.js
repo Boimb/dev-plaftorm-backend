@@ -27,6 +27,7 @@ module.exports = function(app) {
 
     // MODULE_VERSION
     app.post('/module_version', passport.authenticate('authenticated', { session: false}), require('./module_version/controller/moduleVersion.post.js'));
+    app.get('/module/:id/version', require('./module_version/controller/moduleVersion.getByModule.js'));
 
     // MODULE_DOWNLOAD
     app.post('/module_download', passport.authenticate('authenticated', { session: false}), require('./module_download/controller/moduleDownload.post.js'));
