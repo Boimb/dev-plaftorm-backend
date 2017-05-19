@@ -12,6 +12,7 @@ module.exports = function(app) {
     app.patch('/user', passport.authenticate('authenticated', { session: false}), require('./user/controller/user.patch.js'));
 
     // MODULE
+    app.get('/module', require('./module/controller/module.get.js'));
     app.post('/module', passport.authenticate('authenticated', { session: false}), require('./module/controller/module.post.js'));
     app.patch('/module/:id', passport.authenticate('authenticated', { session: false}), require('./module/controller/module.patch.js'));
 

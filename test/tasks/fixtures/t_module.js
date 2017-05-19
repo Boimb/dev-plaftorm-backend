@@ -4,6 +4,7 @@ module.exports = [{
     name: 'test',
     slug: 'test',
     img: 'http://test',
+    online: 1,
     url: 'http://github.com/test/gladys-twitter',
     min_gladys_version: 3,
     max_gladys_version: 3
