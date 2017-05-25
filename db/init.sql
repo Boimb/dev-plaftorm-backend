@@ -9,6 +9,7 @@ CREATE TABLE t_user (
     id uuid DEFAULT uuid_generate_v4() NOT NULL,
     name character varying NOT NULL,
     email character varying NOT NULL,
+    language character varying NOT NULL,
     password character varying NOT NULL,
     active boolean DEFAULT false NOT NULL,
     is_admin boolean DEFAULT false NOT NULL, 
