@@ -14,7 +14,8 @@ module.exports = function fillDb(){
         't_module_download',
         't_module_review',
         't_module_text',
-        't_script'
+        't_script',
+        't_notification'
     ];
 
     return Promise.each(toFillInOrder, function(table){

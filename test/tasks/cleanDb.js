@@ -4,6 +4,7 @@ module.exports = function cleanDb(){
     const db = require(__base + 'core/service/db.js');
 
     var toCleanInOrder = [
+        't_notification',
         't_module_download',
         't_module_review',
         't_module_text',
