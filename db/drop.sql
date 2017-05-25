@@ -1,0 +1,12 @@
+DROP TABLE t_notification;
+DROP TABLE t_module_review;
+DROP TABLE t_module_text;
+DROP TABLE t_module_download;
+DROP TABLE t_module_version;
+DROP TABLE t_instance;
+DROP TABLE t_gladys_version;
+DROP TABLE t_sentence_vote;
+DROP TABLE t_sentence;
+DROP TABLE t_module;
+DROP TABLE t_script;
+DROP TABLE t_user;
