@@ -42,5 +42,6 @@ module.exports = function(app) {
 
      // SENTENCE
      app.post('/sentence', passport.authenticate('authenticated', { session: false}), require('./sentence/controller/sentence.post.js'));
+     app.post('/sentence/:id/vote', passport.authenticate('authenticated', { session: false}), require('./sentence/controller/sentence.vote.js'));
      app.get('/sentence', require('./sentence/controller/sentence.get.js'));
 };
