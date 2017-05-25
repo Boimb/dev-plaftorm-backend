@@ -40,6 +40,7 @@ module.exports = function(app) {
     app.patch('/script/:id', passport.authenticate('authenticated', { session: false}), require('./script/controller/script.patch.js'));
     app.get('/account/script', passport.authenticate('authenticated', { session: false}), require('./script/controller/script.getMyScripts.js'));
 
-    // SENTENCE
+     // SENTENCE
      app.post('/sentence', passport.authenticate('authenticated', { session: false}), require('./sentence/controller/sentence.post.js'));
+     app.get('/sentence', require('./sentence/controller/sentence.get.js'));
 };
