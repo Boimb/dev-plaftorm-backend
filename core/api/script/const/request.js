@@ -7,5 +7,11 @@ module.exports = {
         ORDER BY t_script.updated_at DESC
         LIMIT $1
         OFFSET $2;
+    `,
+    getById: ` 
+        SELECT t_script.*, t_user.name as author
+        FROM t_script
+        JOIN t_user ON t_script.user_id = t_user.id
+        WHERE t_script.id = $1;
     `
 };
