@@ -8,5 +8,9 @@ module.exports = {
         ORDER BY note DESC
         LIMIT $1
         OFFSET $2;
-    `
+    `,
+    updateVote: 
+     `
+        UPDATE t_sentence_vote SET vote = $3 WHERE user_id = $1 AND sentence_id = $2 RETURNING *;
+     `
 };
