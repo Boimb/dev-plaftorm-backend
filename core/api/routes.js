@@ -39,4 +39,7 @@ module.exports = function(app) {
     app.get('/script/:id', require('./script/controller/script.getById.js'));
     app.patch('/script/:id', passport.authenticate('authenticated', { session: false}), require('./script/controller/script.patch.js'));
     app.get('/account/script', passport.authenticate('authenticated', { session: false}), require('./script/controller/script.getMyScripts.js'));
+
+    // SENTENCE
+     app.post('/sentence', passport.authenticate('authenticated', { session: false}), require('./sentence/controller/sentence.post.js'));
 };
