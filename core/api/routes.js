@@ -32,4 +32,7 @@ module.exports = function(app) {
 
     // MODULE_DOWNLOAD
     app.post('/module_download', passport.authenticate('authenticated', { session: false}), require('./module_download/controller/moduleDownload.post.js'));
+
+    // SCRIPT
+    app.post('/script', passport.authenticate('authenticated', { session: false}), require('./script/controller/script.post.js'));
 };

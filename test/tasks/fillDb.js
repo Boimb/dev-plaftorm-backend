@@ -13,7 +13,8 @@ module.exports = function fillDb(){
         't_module_version',
         't_module_download',
         't_module_review',
-        't_module_text'
+        't_module_text',
+        't_script'
     ];
 
     return Promise.each(toFillInOrder, function(table){

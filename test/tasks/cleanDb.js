@@ -13,6 +13,7 @@ module.exports = function cleanDb(){
         't_sentence_vote',
         't_sentence',
         't_module',
+        't_script',
         't_user'
     ];
 
