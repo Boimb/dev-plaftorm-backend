@@ -170,6 +170,19 @@ CREATE TABLE t_gladys_version (
 ALTER TABLE ONLY t_gladys_version ADD CONSTRAINT t_gladys_version_pkey PRIMARY KEY (id);
 ALTER TABLE t_gladys_version OWNER TO postgres;
 
+CREATE TABLE t_notification (
+    id uuid DEFAULT uuid_generate_v4() NOT NULL,
+    user_id uuid NOT NULL,
+    type character varying NOT NULL,
+    params jsonb DEFAULT '{}' NOT NULL,
+    created_at timestamp NOT NULL default now(),
+    updated_at timestamp NOT NULL default now(),
+    is_deleted boolean DEFAULT false NOT NULL
+);
+
+ALTER TABLE ONLY t_notification ADD CONSTRAINT t_notification_pkey PRIMARY KEY (id);
+ALTER TABLE t_notification OWNER TO postgres;
+
 -------------------------
 -- CREATE FOREIGN KEYS --
 -------------------------
@@ -210,6 +223,9 @@ ALTER TABLE ONLY t_sentence_vote
 ALTER TABLE ONLY t_sentence_vote
     ADD CONSTRAINT fk_t_sentence_vote_sentence_id_t_sentence FOREIGN KEY (sentence_id) REFERENCES t_sentence(id);
 
+ALTER TABLE ONLY t_notification
+    ADD CONSTRAINT fk_t_notification_user_id_t_user FOREIGN KEY (user_id) REFERENCES t_user(id);
+
 --------------------
 -- CREATE INDEXES --
 --------------------
@@ -228,6 +244,8 @@ CREATE INDEX ix_t_sentence_user_id ON t_sentence USING btree (user_id);
 CREATE INDEX ix_t_sentence_vote_user_id ON t_sentence_vote USING btree (user_id);
 CREATE INDEX ix_t_sentence_vote_sentence_id ON t_sentence_vote USING btree (sentence_id);
 CREATE INDEX ix_t_gladys_version_created_at ON t_gladys_version USING btree (created_at);
+CREATE INDEX ix_t_notification_user_id ON t_notification USING btree (user_id);
+CREATE INDEX ix_t_notification_created_at ON t_notification USING btree (created_at);
 
 ---------------------------
 -- CREATE UNIQUE INDEXES --
