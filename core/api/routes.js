@@ -35,4 +35,5 @@ module.exports = function(app) {
 
     // SCRIPT
     app.post('/script', passport.authenticate('authenticated', { session: false}), require('./script/controller/script.post.js'));
+    app.patch('/script/:id', passport.authenticate('authenticated', { session: false}), require('./script/controller/script.patch.js'));
 };
