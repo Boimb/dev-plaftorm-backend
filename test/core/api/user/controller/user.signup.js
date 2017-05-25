@@ -8,6 +8,7 @@ describe('user', function () {
             var params = {
                 name: 'Jean',
                 email: 'jean.test@test.fr',
+                language: 'en',
                 password: 'testtests'
             };
 
@@ -25,6 +26,7 @@ describe('user', function () {
             var params = {
                 name: 'Jean',
                 email: 'tony.stark@test.fr',
+                language: 'en',
                 password: 'testtests'
             };
 

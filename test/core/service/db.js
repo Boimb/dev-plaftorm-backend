@@ -9,7 +9,7 @@ describe('db', function () {
     describe('.insert()', function () {
         it('should insert a row in DB', function () {
             const db = require(__base + 'core/service/db.js');
-            return db.insert('t_user', {name: 'test', email: 'tes@test.fr', password: 'eeee'});
+            return db.insert('t_user', {name: 'test', email: 'tes@test.fr', password: 'eeee', language: 'en'});
         });
     });
 

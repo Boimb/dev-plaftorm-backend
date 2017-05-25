@@ -5,6 +5,7 @@ describe('user', function () {
             var params = {
                 name: 'Jean',
                 email: 'jean.test@test.fr',
+                language: 'en',
                 password: 'testtests'
             };
             return user.create(params)
@@ -36,6 +37,7 @@ describe('user', function () {
             var params = {
                 name: 'Jean',
                 email: 'tony.stark@test.fr',
+                language: 'en',
                 password: 'testtests'
             };
             return user.create(params)
