@@ -175,6 +175,7 @@ CREATE TABLE t_notification (
     user_id uuid NOT NULL,
     type character varying NOT NULL,
     params jsonb DEFAULT '{}' NOT NULL,
+    read boolean DEFAULT false NOT NULL,
     created_at timestamp NOT NULL default now(),
     updated_at timestamp NOT NULL default now(),
     is_deleted boolean DEFAULT false NOT NULL
