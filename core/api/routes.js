@@ -36,5 +36,6 @@ module.exports = function(app) {
     // SCRIPT
     app.get('/script', require('./script/controller/script.get.js'));
     app.post('/script', passport.authenticate('authenticated', { session: false}), require('./script/controller/script.post.js'));
+    app.get('/script/:id', require('./script/controller/script.getById.js'));
     app.patch('/script/:id', passport.authenticate('authenticated', { session: false}), require('./script/controller/script.patch.js'));
 };
