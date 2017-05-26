@@ -15,6 +15,7 @@ after(function() {
 });
 
 beforeEach(function() {
+    this.timeout(6000);
     return cleanDb()
         .then(() => fillDb())
         .then(() => cleanRedis())
