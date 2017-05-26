@@ -13,8 +13,12 @@ module.exports = {
         port: parseInt(process.env.REDIS_PORT),
         passord: process.env.REDIS_PASSWORD
     },
+    cache: {
+        resetPasswordExpiration: parseInt(process.env.CACHE_RESET_PASSWORD_EXPIRATION)
+    },
     server: {
-        port: parseInt(process.env.SERVER_PORT)
+        port: parseInt(process.env.SERVER_PORT),
+        frontEndDomain: process.env.FRONT_END_DOMAIN
     },
     accessTokenJwt: {
         secret: process.env.ACCESS_TOKEN_JWT_SECRET,
@@ -24,5 +28,12 @@ module.exports = {
     },
     aws: {
         bucket: process.env.AWS_BUCKET
+    },
+    mailgun: {
+        apiKey: process.env.MAILGUN_API_KEY,
+        domain: process.env.MAILGUN_DOMAIN
+    },
+    email: {
+        from: process.env.EMAIL_FROM
     }
 };
