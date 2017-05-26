@@ -1,0 +1,1 @@
+module.exports.getModules = require('./admin.getModules');
