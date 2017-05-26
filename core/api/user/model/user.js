@@ -1,3 +1,4 @@
+module.exports.activate = require('./user.activate.js');
 module.exports.create = require('./user.create.js');
 module.exports.changeLostPassword = require('./user.changeLostPassword.js');
 module.exports.getById = require('./user.getById.js');
