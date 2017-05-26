@@ -9,6 +9,7 @@ module.exports = function(app) {
     // USER
     app.post('/signup', require('./user/controller/user.signup.js'));
     app.post('/login', require('./user/controller/user.login.js'));
+    app.post('/user/activate/:token', require('./user/controller/user.activate.js'));
     app.patch('/user', passport.authenticate('authenticated', { session: false}), require('./user/controller/user.patch.js'));
 
     // MODULE
