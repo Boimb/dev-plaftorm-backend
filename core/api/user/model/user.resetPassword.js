@@ -21,7 +21,7 @@ function resetPassword(params) {
 
             user = rows[0];
 
-            return redisClient.getAsync(`user_reset_password:${params.email}`)
+            return redisClient.getAsync(`user_reset_password:email:${params.email}`)
         })
         .then((currentToken) => {
 
@@ -30,7 +30,10 @@ function resetPassword(params) {
 
             var resetToken = uuid.v4();
 
-            return redisClient.setAsync(`user_reset_password:${params.email}`, resetToken, 'EX', config.cache.resetPasswordExpiration)
+            return redisClient.multi()
+                .set(`user_reset_password:email:${params.email}`, resetToken, 'EX', config.cache.resetPasswordExpiration)
+                .set(`user_reset_password:token:${resetToken}`, user.id, 'EX', config.cache.resetPasswordExpiration)
+                .execAsync()
                 .then(() => resetToken);
         })
         .then((resetToken) => {
