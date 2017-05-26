@@ -10,6 +10,8 @@ const uuid = require('uuid');
 const db = require(__base + 'core/service/db.js');
 const config = require(__base + 'config.js');
 const request = require('../const/request.js');
+const mailgun = require(__base + 'core/service/mailgun.js');
+const redisClient = require(__base + 'core/service/redis.js');
 const saltRounds = 10;
 
 function create(params){
@@ -47,6 +49,20 @@ function create(params){
             
             user.access_token = jwt.sign(accessTokenPayload, config.accessTokenJwt.secret, config.accessTokenJwt.options);
 
-            return user;
-        });
+            var scope = {
+                confirmationToken: uuid.v4()
+            };
+
+            scope.confirmationUrl = config.server.frontEndDomain + '/confirm/' + scope.confirmationToken;
+
+            return redisClient.setAsync(`user:confirmation-token:${scope.confirmationUrl}`, user.id)
+                .then(() => [user, scope]);
+            })
+            .spread((user, scope) => {
+
+                // send confirmation email
+                mailgun.send(user, 'confirmation', scope);
+
+                return user;
+            });
 }

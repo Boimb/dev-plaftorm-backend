@@ -39,11 +39,11 @@ function resetPassword(params) {
         .then((resetToken) => {
 
             var scope = {
-                confirmationUrl: config.server.frontEndDomain + '/reset-password/' + resetToken
+                resetPasswordUrl: config.server.frontEndDomain + '/reset-password/' + resetToken
             };
 
-            // send confirmation email
-            mailgun.send(user, 'confirmation', scope);
+            // send password_reset email
+            mailgun.send(user, 'password_reset', scope);
 
             return {success: true};
         });
