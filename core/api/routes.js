@@ -47,4 +47,5 @@ module.exports = function(app) {
 
      // NOTIFICATION
      app.get('/notification', passport.authenticate('authenticated', { session: false}), require('./notification/controller/notification.get.js'));
+     app.post('/notification/read', passport.authenticate('authenticated', { session: false}), require('./notification/controller/notification.read.js'));
 };
