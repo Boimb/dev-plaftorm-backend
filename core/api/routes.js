@@ -44,4 +44,7 @@ module.exports = function(app) {
      app.post('/sentence', passport.authenticate('authenticated', { session: false}), require('./sentence/controller/sentence.post.js'));
      app.post('/sentence/:id/vote', passport.authenticate('authenticated', { session: false}), require('./sentence/controller/sentence.vote.js'));
      app.get('/sentence', require('./sentence/controller/sentence.get.js'));
+
+     // NOTIFICATION
+     app.get('/notification', passport.authenticate('authenticated', { session: false}), require('./notification/controller/notification.get.js'));
 };
