@@ -1,6 +1,7 @@
 global.__base = __dirname + '/../';
 const should = require('should');
 const cleanDb = require('./tasks/cleanDb.js');
+const cleanRedis = require('./tasks/cleanRedis.js');
 const fillDb = require('./tasks/fillDb.js');
 const nock = require('./tasks/nock.js');
 
@@ -13,7 +14,8 @@ after(function() {
 });
 
 beforeEach(function() {
-    return cleanDb().then(() => fillDb());
+    return cleanDb().then(() => fillDb())
+        .then(() => cleanRedis());
 });
 
 afterEach(function() {
