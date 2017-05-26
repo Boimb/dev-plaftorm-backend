@@ -6,5 +6,8 @@ module.exports = {
         ORDER BY created_at DESC
         LIMIT $2
         OFFSET $3;
+    `,
+    read: `
+        UPDATE t_notification SET read = true WHERE user_id = $1
     `
 };
