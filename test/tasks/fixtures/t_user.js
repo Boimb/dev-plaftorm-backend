@@ -5,6 +5,7 @@ module.exports = [
         email: 'tony.stark@test.fr',
         language: 'en',
         active: true,
+        is_admin: true,
         password: '$2a$10$h9SUFQxdcqDL/jmsXQCq9e3cXZOO05GaraNDTCAGTpb13cjo2n0mC'
     }
 ];

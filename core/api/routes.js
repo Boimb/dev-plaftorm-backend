@@ -1,4 +1,5 @@
 const passport = require('passport');
+const admin = require('../middleware/admin.js');
 
 module.exports = function(app) {
 
@@ -49,4 +50,7 @@ module.exports = function(app) {
      // NOTIFICATION
      app.get('/notification', passport.authenticate('authenticated', { session: false}), require('./notification/controller/notification.get.js'));
      app.post('/notification/read', passport.authenticate('authenticated', { session: false}), require('./notification/controller/notification.read.js'));
+
+     // ADMIN
+     app.get('/admin/module', passport.authenticate('authenticated', { session: false}), admin, require('./admin/controller/admin.getModules.js'));
 };

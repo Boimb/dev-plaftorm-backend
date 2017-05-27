@@ -19,7 +19,6 @@ module.exports = function formatError(err) {
         // else return the default one
         else err = errors.db.default;
     } else if(err instanceof Error) {
-
         if(errors.model[err.message]) err = errors.model[err.message];
         else err = errors.model.DEFAULT;
     }

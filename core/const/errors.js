@@ -20,6 +20,10 @@ module.exports = {
             code: 404,
             message: 'NOT_FOUND'
         },
+        'UNAUTHORIZED': {
+            code: 401,
+            message: 'UNAUTHORIZED'
+        },
         'DEFAULT': {
             code: 500,
             message: 'SERVER_ERROR'
